@@ -1,2 +1,1 @@
-# custom-appointment-with-additional-attribute-flutter-event-calendar
-How to add additional attributes in events in the Flutter event calendar (SfCalendar)
+**[View document in Syncfusion Flutter Knowledge base](https://www.syncfusion.com/kb/12209/how-to-add-additional-attributes-in-events-in-the-flutter-event-calendar-sfcalendar)**
