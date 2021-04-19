@@ -21,17 +21,7 @@ class AdditionalAttribute_Appointment extends StatefulWidget {
 }
 
 class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
-  String _subjectText, _startTimeText, _endTimeText, _dateText, _timeDetails;
-
-  @override
-  void initState() {
-    _subjectText = '';
-    _startTimeText = '';
-    _endTimeText = '';
-    _dateText = '';
-    _timeDetails = '';
-    super.initState();
-  }
+  String? _subjectText='', _startTimeText='', _endTimeText='', _dateText='', _timeDetails='';
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +41,16 @@ class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
 
   void calendarTapped(CalendarTapDetails details) {
     if (details.targetElement == CalendarElement.appointment) {
-      final Meeting appointmentDetails = details.appointments[0];
-      _subjectText = appointmentDetails.eventName;
+      final Meeting appointmentDetails = details.appointments![0];
+      _subjectText = appointmentDetails.eventName!;
       _dateText = DateFormat('MMMM dd, yyyy')
-          .format(appointmentDetails.from)
+          .format(appointmentDetails.from!)
           .toString();
       _startTimeText =
-          DateFormat('hh:mm a').format(appointmentDetails.from).toString();
+          DateFormat('hh:mm a').format(appointmentDetails.from!).toString();
       _endTimeText =
-          DateFormat('hh:mm a').format(appointmentDetails.to).toString();
-      if (appointmentDetails.isAllDay) {
+          DateFormat('hh:mm a').format(appointmentDetails.to!).toString();
+      if (appointmentDetails.isAllDay!) {
         _timeDetails = 'All day';
       } else {
         _timeDetails = '$_startTimeText - $_endTimeText';
@@ -87,7 +77,7 @@ class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
                     ),
                     Row(
                       children: <Widget>[
-                        Text(_timeDetails,
+                        Text(_timeDetails!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w400, fontSize: 15)),
                       ],
@@ -153,18 +143,18 @@ class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
 class Meeting {
   Meeting(
       {this.eventName,
-      this.from,
-      this.to,
-      this.background,
-      this.isAllDay = false,
-      this.id});
+        this.from,
+        this.to,
+        this.background,
+        this.isAllDay = false,
+        this.id});
 
-  String eventName;
-  DateTime from;
-  DateTime to;
-  Color background;
-  bool isAllDay;
-  int id;
+  String? eventName;
+  DateTime? from;
+  DateTime? to;
+  Color? background;
+  bool? isAllDay;
+  int? id;
 }
 
 class MeetingDataSource extends CalendarDataSource {
@@ -174,26 +164,26 @@ class MeetingDataSource extends CalendarDataSource {
 
   @override
   DateTime getStartTime(int index) {
-    return appointments[index].from;
+    return appointments![index].from;
   }
 
   @override
   DateTime getEndTime(int index) {
-    return appointments[index].to;
+    return appointments![index].to;
   }
 
   @override
   String getSubject(int index) {
-    return appointments[index].eventName;
+    return appointments![index].eventName;
   }
 
   @override
   bool isAllDay(int index) {
-    return appointments[index].isAllDay;
+    return appointments![index].isAllDay;
   }
 
   @override
   Color getColor(int index) {
-    return appointments[index].background;
+    return appointments![index].background;
   }
 }
