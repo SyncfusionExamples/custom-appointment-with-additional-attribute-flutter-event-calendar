@@ -21,7 +21,7 @@ class AdditionalAttribute_Appointment extends StatefulWidget {
 }
 
 class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
-  String? _subjectText='', _startTimeText='', _endTimeText='', _dateText='', _timeDetails='';
+  String _subjectText='', _startTimeText='', _endTimeText='', _dateText='', _timeDetails='';
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,7 @@ class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
                     ),
                     Row(
                       children: <Widget>[
-                        Text(_timeDetails!,
+                        Text(_timeDetails,
                             style: TextStyle(
                                 fontWeight: FontWeight.w400, fontSize: 15)),
                       ],
