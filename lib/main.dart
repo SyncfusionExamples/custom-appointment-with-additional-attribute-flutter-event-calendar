@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-void main() => runApp(AdditionalAttribute());
+void main() => runApp(const AdditionalAttribute());
 
 class AdditionalAttribute extends StatelessWidget {
+  const AdditionalAttribute({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,7 +60,7 @@ class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Container(child: new Text('$_subjectText')),
+              title: Container(child: Text('$_subjectText')),
               content: Container(
                 height: 80,
                 child: Column(
@@ -68,7 +69,7 @@ class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
                       children: <Widget>[
                         Text(
                           '$_dateText',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 20,
                           ),
@@ -78,7 +79,7 @@ class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
                     Row(
                       children: <Widget>[
                         Text(_timeDetails,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.w400, fontSize: 15)),
                       ],
                     ),
@@ -91,11 +92,11 @@ class AppointmentDetails extends State<AdditionalAttribute_Appointment> {
                 ),
               ),
               actions: <Widget>[
-                new FlatButton(
+                TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: new Text('close'))
+                    child: const Text('close'))
               ],
             );
           });
